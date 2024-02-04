@@ -50,8 +50,6 @@ pipeline {
                 """
             }
         }
-
-    }
         stage('Deploy') {
             steps {
                 sh """
@@ -60,6 +58,8 @@ pipeline {
                 """
             }
         }
+
+    }
     // post build
     post { 
         always { 
