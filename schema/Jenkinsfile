@@ -40,7 +40,6 @@ pipeline {
                 """
             }
         }
-        stage('Test') {
         stage('Build') {
             steps {
                 echo 'Testing..'
@@ -61,7 +60,6 @@ pipeline {
                 """
             }
         }
-    }
     // post build
     post { 
         always { 
