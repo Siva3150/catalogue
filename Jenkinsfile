@@ -7,10 +7,10 @@ pipeline {
     environment { 
         packageVersion = ''
     }
-     options {
-         timeout(time: 1, unit: 'HOURS')
-         disableConcurrentBuilds()
-     }
+    options {
+        timeout(time: 1, unit: 'HOURS')
+        disableConcurrentBuilds()
+    }
     // parameters {
     //     string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
 
@@ -33,19 +33,19 @@ pipeline {
                 }
             }
         }
-        stage('Install dependencies') {
+         stage('Install dependencies') {
             steps {
                 sh """
                     npm install
                 """
             }
-        }
-        stage('Build') {
+         }
+            stage('Build') {
             steps {
                  sh """
-                zip -r catalogue.zip ./* -x ".git" -x "*.zip"
-                zip -q -r catalogue.zip ./* -x ".git" -x "*.zip"
-                ls -ltr
+                    ls -la
+                    zip -q -r catalogue.zip ./* -x ".git" -x "*.zip"
+                    ls -ltr
                 """
             }
         }
@@ -57,13 +57,12 @@ pipeline {
                 """
             }
         }
-
     }
     // post build
     post { 
         always { 
             echo 'I will always say Hello again!'
-            deleteDir()
+             deleteDir()
         }
         failure { 
             echo 'this runs when pipeline is failed, used generally to send some alerts'
